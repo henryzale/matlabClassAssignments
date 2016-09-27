@@ -845,43 +845,43 @@ gamerange3 = setdiff(gamerange3, exclude);
 cpumove4 = randsample(gamerange3,1);
 clc
 %%defense top row
-if gameboard(1,1) == 'X' && gameboard(1,2) == 'X' && gameboard(1,3) ~= 'O'
+if gameboard(1,1) == 'X' && gameboard(1,2) == 'X' && gameboard(1,3) ~= 'O' && gameboard(1,3) ~= 'X'
     cpumove4 = 3;
     gameboard(1,3) = 'O';
-elseif gameboard(1,1) == 'X' && gameboard(1,3) == 'X' && gameboard(1,2) ~= 'O'
+elseif gameboard(1,1) == 'X' && gameboard(1,3) == 'X' && gameboard(1,2) ~= 'O' && gameboard(1,2) ~= 'X'
     cpumove4 = 2;
     gameboard(1,2) = 'O';
-elseif gameboard(1,2) == 'X' && gameboard(1,3) == 'X' && gameboard(1,1) ~= 'O'
+elseif gameboard(1,2) == 'X' && gameboard(1,3) == 'X' && gameboard(1,1) ~= 'O' && gameboard(1,1) ~= 'X'
     cpumove4 = 1;
     gameboard(1,1) = 'O';
     %%%leftside
-elseif gameboard(1,1) == 'X' && gameboard(2,1) == 'X' && gameboard(3,1) ~= 'O'
+elseif gameboard(1,1) == 'X' && gameboard(2,1) == 'X' && gameboard(3,1) ~= 'O' && gameboard(3,1) ~= 'X'
     cpumove4 = 7;
     gameboard(3,1) = 'O';
-elseif gameboard(1,1) == 'X' && gameboard(3,1) == 'X' && gameboard(2,1) ~= 'O'
+elseif gameboard(1,1) == 'X' && gameboard(3,1) == 'X' && gameboard(2,1) ~= 'O' && gameboard(2,1) ~= 'X'
     cpumove4 = 4;
     gameboard(2,1) = 'O';
-elseif gameboard(3,1) == 'X' && gameboard(2,1) == 'X' && gameboard(1,1) ~= 'O'
+elseif gameboard(3,1) == 'X' && gameboard(2,1) == 'X' && gameboard(1,1) ~= 'O' && gameboard(1,1) ~= 'X'
     cpumove4 = 1;
     gameboard(1,1) = 'O';
     %%%bottomrow
-elseif gameboard(3,1) == 'X' && gameboard(3,2) == 'X' && gameboard(3,3) ~= 'O'
+elseif gameboard(3,1) == 'X' && gameboard(3,2) == 'X' && gameboard(3,3) ~= 'O' && gameboard(3,3) ~= 'X'
     cpumove4 = 9;
     gameboard(3,3) = 'O';
-elseif gameboard(3,1) == 'X' && gameboard(3,3) == 'X' && gameboard(3,2) ~= 'O'
+elseif gameboard(3,1) == 'X' && gameboard(3,3) == 'X' && gameboard(3,2) ~= 'O' && gameboard(3,2) ~= 'X'
     cpumove4 = 8;
     gameboard(3,2) = 'O';
-elseif gameboard(3,2) == 'X' && gameboard(3,3) == 'X' && gameboard(3,1) ~= 'O'
+elseif gameboard(3,2) == 'X' && gameboard(3,3) == 'X' && gameboard(3,1) ~= 'O' && gameboard(3,1) ~= 'X'
     cpumove4 = 7;
     gameboard(3,1) = 'O';
     %%%rightside
-elseif gameboard(1,3) == 'X' && gameboard(2,3) == 'X' && gameboard(3,3) ~= 'O'
+elseif gameboard(1,3) == 'X' && gameboard(2,3) == 'X' && gameboard(3,3) ~= 'O' && gameboard(3,3) ~= 'X'
     cpumove4 = 9;
     gameboard(3,3) = 'O';
-elseif gameboard(1,3) == 'X' && gameboard(3,3) == 'X' && gameboard(2,3) ~= 'O'
+elseif gameboard(1,3) == 'X' && gameboard(3,3) == 'X' && gameboard(2,3) ~= 'O' && gameboard(2,3) ~= 'X'
     cpumove4 = 6;
     gameboard(2,3) = 'O';
-elseif gameboard(3,3) == 'X' && gameboard(2,3) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(3,3) == 'X' && gameboard(2,3) == 'X' && gameboard(1,3) ~= 'O' && gameboard(1,3) ~= 'X'
     cpumove4 = 3;
     gameboard(1,3) = 'O';
 else
@@ -904,6 +904,7 @@ else
             gameboard(3,3) = 'O';
     end
 end
+%%%%%%%%%%%%%%%%%% WIN statement%%%%%%%%%%%%%%%%%%%%%%%%
 if gameboard(1,1) == 'O' && gameboard(1,2) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
@@ -1249,71 +1250,27 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Computer Move 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-gamerange4 = 1:9;
-exclude = [5, move1, cpumove2, move2, cpumove3, move3, cpumove4, move4];
-gamerange4 = setdiff(gamerange4, exclude);
-cpumove5 = randsample(gamerange4,1);
 clc
-%%defense top row
-if gameboard(1,1) == 'X' && gameboard(1,2) == 'X' && gameboard(1,3) ~= 'O'
-    cpumove5 = 3;
-    gameboard(1,3) = 'O';
-elseif gameboard(1,1) == 'X' && gameboard(1,3) == 'X' && gameboard(1,2) ~= 'O'
-    cpumove5 = 2;
+
+if gameboard(1,1) == '1'
+    gameboard(1,1) = 'O';
+elseif gameboard(1,2) == '2'
     gameboard(1,2) = 'O';
-elseif gameboard(1,2) == 'X' && gameboard(1,3) == 'X' && gameboard(1,1) ~= 'O'
-    cpumove5 = 1;
-    gameboard(1,1) = 'O';
-    %%%leftside
-elseif gameboard(1,1) == 'X' && gameboard(2,1) == 'X' && gameboard(3,1) ~= 'O'
-    cpumove5 = 7;
-    gameboard(3,1) = 'O';
-elseif gameboard(1,1) == 'X' && gameboard(3,1) == 'X' && gameboard(2,1) ~= 'O'
-    cpumove5 = 4;
-    gameboard(2,1) = 'O';
-elseif gameboard(3,1) == 'X' && gameboard(2,1) == 'X' && gameboard(1,1) ~= 'O' 
-    cpumove5 = 1;
-    gameboard(1,1) = 'O';
-    %%%bottomrow
-elseif gameboard(3,1) == 'X' && gameboard(3,2) == 'X' && gameboard(3,3) ~= 'O'
-    cpumove5 = 9;
-    gameboard(3,3) = 'O';
-elseif gameboard(3,1) == 'X' && gameboard(3,3) == 'X' && gameboard(3,2) ~= 'O'
-    cpumove5 = 8;
-    gameboard(3,2) = 'O';
-elseif gameboard(3,2) == 'X' && gameboard(3,3) == 'X' && gameboard(3,1) ~= 'O'
-    cpumove5 = 7;
-    gameboard(3,1) = 'O';
-    %%%rightside
-elseif gameboard(1,3) == 'X' && gameboard(2,3) == 'X' && gameboard(3,3) ~= 'O'
-    cpumove5 = 9;
-    gameboard(3,3) = 'O';
-elseif gameboard(1,3) == 'X' && gameboard(3,3) == 'X' && gameboard(2,3) ~= 'O'
-    cpumove5 = 6;
-    gameboard(2,3) = 'O';
-elseif gameboard(3,3) == 'X' && gameboard(2,3) == 'X' && gameboard(1,3) ~= 'O'
-    cpumove5 = 3;
+elseif gameboard(1,3) == '3'
     gameboard(1,3) = 'O';
+elseif gameboard(2,1) == '4'
+    gameboard(2,1) = 'O';
+elseif gameboard(2,3) == '6'
+    gameboard(2,3) = 'O';
+elseif gameboard(3,1) == '7'
+    gameboard(3,1) = 'O';
+elseif gameboard(3,2) == '8'
+    gameboard(3,2) = 'O';
+elseif gameboard(3,3) == '9'
+    gameboard(3,3) = 'O';
 else
-    switch cpumove5
-        case 1
-            gameboard(1,1) = 'O';
-        case 2
-            gameboard(1,2) = 'O';
-        case 3
-            gameboard(1,3) = 'O';
-        case 4
-            gameboard(2,1) = 'O';
-        case 6
-            gameboard(2,3) = 'O';
-        case 7
-            gameboard(3,1) = 'O';
-        case 8
-            gameboard(3,2) = 'O';
-        case 9
-            gameboard(3,3) = 'O';
-    end
-end
+end 
+%%%%%%%%%%%%%%%%%%%%%% WIN STATEMENT%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if gameboard(1,1) == 'O' && gameboard(1,2) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
@@ -1346,9 +1303,8 @@ elseif gameboard(1,2) == 'O' && gameboard(2,2) == 'O' && gameboard(3,2) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
     return
-else
+else disp ('Turns out you werent total garbage.')
 end
 
-disp('we got a nail biter on our hands!')
 disp(gameboard)
 disp('that was ZERO fun.')

@@ -154,8 +154,13 @@ cumsum(3+5+7+9+11)
 
 % 26.)
 
+<<<<<<< HEAD
 numerators = [3:2:9]
 denominators = [1:4]
+=======
+num = [3:2:9]
+den = [1:4]
+>>>>>>> 5201009af8e0953e3a8d5f85f4898906331b0db8
 sum(num./den)
 
 % 30.)
@@ -211,7 +216,12 @@ fprintf('is equivalent to %5.2f feet per sec\n',flowconv);
 x13 = input('Enter the x value: ');
 y13 = input('Enter the y value: ');
 z13 = input('Enter the z value: ');
+<<<<<<< HEAD
 ch3q13 = {x13,y13,z13}/(sqrt(x13^2+y13^2+z13^2))
+=======
+xyz13 = [x13,y13,z13]
+ch3q13 = xyz13/(sqrt(x13^2+y13^2+z13^2))
+>>>>>>> 5201009af8e0953e3a8d5f85f4898906331b0db8
 
 
 
