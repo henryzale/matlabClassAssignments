@@ -1,7 +1,11 @@
 %Henry Zale
-%9/22/2016
+%10/4/2016
 
 %TicTacToe Game Instructions:
+%Welcome!
+%TicTacToe will begin with a simple practice round without an opponent to
+%familiarize the user to the gameboard. Once to top row is filled in with
+%X's, the practice round will end.
 %Begin game by choosing a random number and pressing enter.
 %The game has now begun, and the computer has made it's first move.
 %Use the keypad to select a number and press enter to place your own moves
@@ -9,15 +13,68 @@
 %Get 3 X's in a row to win, but you have to beat the computer to it!
 
 clc
-disp('Welcome to TicTacToe! Prepare to lose!')
+play = 'Yes';
+prompt = questdlg('OH Hello! I didn''t see you there. Would you like to play a game?');
+gameon = strcmp(prompt,play);
+if gameon == 1
+    disp('Welcome to TicTacToe!')
+    gameboard = ['1','2','3';'4','5','6';'7','8','9'];
+    num2str(gameboard);
+    disp(gameboard)
+    n = 1;
+    for n = 1:100
+        n + 1;
+        practmove1 = input('Let''s try a quick practice without an opponent. Try to get 3 in a row on the top row.\n>');
+        clc
+        
+        switch practmove1
+            case 1
+                gameboard(1,1) = 'X';
+            case 2
+                gameboard(1,2) = 'X';
+            case 3
+                gameboard(1,3) = 'X';
+            case 4
+                gameboard(2,1) = 'X';
+            case 5
+                gameboard(2,2) = 'X';
+            case 6
+                gameboard(2,3) = 'X';
+            case 7
+                gameboard(3,1) = 'X';
+            case 8
+                gameboard(3,2) = 'X';
+            case 9
+                gameboard(3,3) = 'X';
+        end
+        disp(gameboard)
+        
+        if gameboard(1,1) == 'X' && gameboard(1,2) == 'X' && gameboard(1,3) == 'X'
+            break  
+        end 
+    end
+else
+    disp('Woulda rekt you anyway')
+    return
+end
+   
+clc
+% disp('Alright, it''s game time!')
+% gameboard = ['1','2','3';'4','5','6';'7','8','9'];
+% num2str(gameboard);
+% disp(gameboard)
 
+
+
+while gameon == 1
+disp('Alright, it''s game time!')
 gameboard = ['1','2','3';'4','5','6';'7','8','9'];
 num2str(gameboard);
 disp(gameboard)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% CPU Move 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-startgame = input('Enter any number to begin\n>');
+startgame = input('Enter any number to begin, the computer will play first.\n>');
 clc
 if startgame == 1
     cpumove1 = 'O';
@@ -499,35 +556,51 @@ end
 if gameboard(1,1) == 'O' && gameboard(1,2) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('OH Hello! I didn''t see you there. Would you like to play a game?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(1,1) == 'O' && gameboard(2,1) == 'O' && gameboard(3,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(3,2) == 'O' && gameboard(3,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(2,3) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(2,2) == 'O' && gameboard(1,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,1) == 'O' && gameboard(2,2) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(2,3) == 'O' && gameboard(2,2) == 'O' && gameboard(2,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(1,2) == 'O' && gameboard(2,2) == 'O' && gameboard(3,2) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 else
 end
 disp('i bet you have trouble tying your shoes')
@@ -824,16 +897,24 @@ disp(gameboard)
 
 if gameboard(1,1) == 'X' && gameboard(1,2) == 'X' && gameboard(1,3) == 'X';
     disp('Congrats, you won! No one had money on you')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(1,1) == 'X' && gameboard(2,1) == 'X' && gameboard(3,1) == 'X';
     disp('Congrats, you won! No one had money on you')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'X' && gameboard(3,2) == 'X' && gameboard(3,1) == 'X';
     disp('Congrats, you won! No one had money on you')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'X' && gameboard(2,3) == 'X' && gameboard(1,3) == 'X';
     disp('Congrats, you won! No one had money on you')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 else
 end
 
@@ -845,43 +926,43 @@ gamerange3 = setdiff(gamerange3, exclude);
 cpumove4 = randsample(gamerange3,1);
 clc
 %%defense top row
-if gameboard(1,1) == 'X' && gameboard(1,2) == 'X' && gameboard(1,3) ~= 'O'
+if gameboard(1,1) == 'X' && gameboard(1,2) == 'X' && gameboard(1,3) ~= 'O' && gameboard(1,3) ~= 'X'
     cpumove4 = 3;
     gameboard(1,3) = 'O';
-elseif gameboard(1,1) == 'X' && gameboard(1,3) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(1,1) == 'X' && gameboard(1,3) == 'X' && gameboard(1,2) ~= 'O' && gameboard(1,2) ~= 'X'
     cpumove4 = 2;
     gameboard(1,2) = 'O';
-elseif gameboard(1,2) == 'X' && gameboard(1,3) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(1,2) == 'X' && gameboard(1,3) == 'X' && gameboard(1,1) ~= 'O' && gameboard(1,1) ~= 'X'
     cpumove4 = 1;
     gameboard(1,1) = 'O';
     %%%leftside
-elseif gameboard(1,1) == 'X' && gameboard(2,1) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(1,1) == 'X' && gameboard(2,1) == 'X' && gameboard(3,1) ~= 'O' && gameboard(3,1) ~= 'X'
     cpumove4 = 7;
     gameboard(3,1) = 'O';
-elseif gameboard(1,1) == 'X' && gameboard(3,1) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(1,1) == 'X' && gameboard(3,1) == 'X' && gameboard(2,1) ~= 'O' && gameboard(2,1) ~= 'X'
     cpumove4 = 4;
     gameboard(2,1) = 'O';
-elseif gameboard(3,1) == 'X' && gameboard(2,1) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(3,1) == 'X' && gameboard(2,1) == 'X' && gameboard(1,1) ~= 'O' && gameboard(1,1) ~= 'X'
     cpumove4 = 1;
     gameboard(1,1) = 'O';
     %%%bottomrow
-elseif gameboard(3,1) == 'X' && gameboard(3,2) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(3,1) == 'X' && gameboard(3,2) == 'X' && gameboard(3,3) ~= 'O' && gameboard(3,3) ~= 'X'
     cpumove4 = 9;
     gameboard(3,3) = 'O';
-elseif gameboard(3,1) == 'X' && gameboard(3,3) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(3,1) == 'X' && gameboard(3,3) == 'X' && gameboard(3,2) ~= 'O' && gameboard(3,2) ~= 'X'
     cpumove4 = 8;
     gameboard(3,2) = 'O';
-elseif gameboard(3,2) == 'X' && gameboard(3,3) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(3,2) == 'X' && gameboard(3,3) == 'X' && gameboard(3,1) ~= 'O' && gameboard(3,1) ~= 'X'
     cpumove4 = 7;
     gameboard(3,1) = 'O';
     %%%rightside
-elseif gameboard(1,3) == 'X' && gameboard(2,3) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(1,3) == 'X' && gameboard(2,3) == 'X' && gameboard(3,3) ~= 'O' && gameboard(3,3) ~= 'X'
     cpumove4 = 9;
     gameboard(3,3) = 'O';
-elseif gameboard(1,3) == 'X' && gameboard(3,3) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(1,3) == 'X' && gameboard(3,3) == 'X' && gameboard(2,3) ~= 'O' && gameboard(2,3) ~= 'X'
     cpumove4 = 6;
     gameboard(2,3) = 'O';
-elseif gameboard(3,3) == 'X' && gameboard(2,3) == 'X' && gameboard(1,3) ~= 'O'
+elseif gameboard(3,3) == 'X' && gameboard(2,3) == 'X' && gameboard(1,3) ~= 'O' && gameboard(1,3) ~= 'X'
     cpumove4 = 3;
     gameboard(1,3) = 'O';
 else
@@ -904,38 +985,55 @@ else
             gameboard(3,3) = 'O';
     end
 end
+%%%%%%%%%%%%%%%%%% WIN statement%%%%%%%%%%%%%%%%%%%%%%%%
 if gameboard(1,1) == 'O' && gameboard(1,2) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(1,1) == 'O' && gameboard(2,1) == 'O' && gameboard(3,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(3,2) == 'O' && gameboard(3,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(2,3) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(2,2) == 'O' && gameboard(1,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,1) == 'O' && gameboard(2,2) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(2,3) == 'O' && gameboard(2,2) == 'O' && gameboard(2,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(1,2) == 'O' && gameboard(2,2) == 'O' && gameboard(3,2) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 else
 end
 
@@ -1234,121 +1332,108 @@ disp(gameboard)
 
 if gameboard(1,1) == 'X' && gameboard(1,2) == 'X' && gameboard(1,3) == 'X';
     disp('Congrats, you won! No one had money on you')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(1,1) == 'X' && gameboard(2,1) == 'X' && gameboard(3,1) == 'X';
     disp('Congrats, you won! No one had money on you')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'X' && gameboard(3,2) == 'X' && gameboard(3,1) == 'X';
     disp('Congrats, you won! No one had money on you')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'X' && gameboard(2,3) == 'X' && gameboard(1,3) == 'X';
     disp('Congrats, you won! No one had money on you')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 else
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Computer Move 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-gamerange4 = 1:9;
-exclude = [5, move1, cpumove2, move2, cpumove3, move3, cpumove4, move4];
-gamerange4 = setdiff(gamerange4, exclude);
-cpumove5 = randsample(gamerange4,1);
 clc
-%%defense top row
-if gameboard(1,1) == 'X' && gameboard(1,2) == 'X'
-    cpumove5 = 3;
-    gameboard(1,3) = 'O';
-elseif gameboard(1,1) == 'X' && gameboard(1,3) == 'X'
-    cpumove5 = 2;
+
+if gameboard(1,1) == '1'
+    gameboard(1,1) = 'O';
+elseif gameboard(1,2) == '2'
     gameboard(1,2) = 'O';
-elseif gameboard(1,2) == 'X' && gameboard(1,3) == 'X'
-    cpumove5 = 1;
-    gameboard(1,1) = 'O';
-    %%%leftside
-elseif gameboard(1,1) == 'X' && gameboard(2,1) == 'X'
-    cpumove5 = 7;
-    gameboard(3,1) = 'O';
-elseif gameboard(1,1) == 'X' && gameboard(3,1) == 'X'
-    cpumove5 = 4;
-    gameboard(2,1) = 'O';
-elseif gameboard(3,1) == 'X' && gameboard(2,1) == 'X'    
-    cpumove5 = 1;
-    gameboard(1,1) = 'O';
-    %%%bottomrow
-elseif gameboard(3,1) == 'X' && gameboard(3,2) == 'X'
-    cpumove5 = 9;
-    gameboard(3,3) = 'O';
-elseif gameboard(3,1) == 'X' && gameboard(3,3) == 'X'
-    cpumove5 = 8;
-    gameboard(3,2) = 'O';
-elseif gameboard(3,2) == 'X' && gameboard(3,3) == 'X'
-    cpumove5 = 7;
-    gameboard(3,1) = 'O';
-    %%%rightside
-elseif gameboard(1,3) == 'X' && gameboard(2,3) == 'X'
-    cpumove5 = 9;
-    gameboard(3,3) = 'O';
-elseif gameboard(1,3) == 'X' && gameboard(3,3) == 'X'
-    cpumove5 = 6;
-    gameboard(2,3) = 'O';
-elseif gameboard(3,3) == 'X' && gameboard(2,3) == 'X'    
-    cpumove5 = 3;
+elseif gameboard(1,3) == '3'
     gameboard(1,3) = 'O';
+elseif gameboard(2,1) == '4'
+    gameboard(2,1) = 'O';
+elseif gameboard(2,3) == '6'
+    gameboard(2,3) = 'O';
+elseif gameboard(3,1) == '7'
+    gameboard(3,1) = 'O';
+elseif gameboard(3,2) == '8'
+    gameboard(3,2) = 'O';
+elseif gameboard(3,3) == '9'
+    gameboard(3,3) = 'O';
 else
-    switch cpumove5
-        case 1
-            gameboard(1,1) = 'O';
-        case 2
-            gameboard(1,2) = 'O';
-        case 3
-            gameboard(1,3) = 'O';
-        case 4
-            gameboard(2,1) = 'O';
-        case 6
-            gameboard(2,3) = 'O';
-        case 7
-            gameboard(3,1) = 'O';
-        case 8
-            gameboard(3,2) = 'O';
-        case 9
-            gameboard(3,3) = 'O';
-    end
-end
+end 
+%%%%%%%%%%%%%%%%%%%%%% WIN STATEMENT%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if gameboard(1,1) == 'O' && gameboard(1,2) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(1,1) == 'O' && gameboard(2,1) == 'O' && gameboard(3,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(3,2) == 'O' && gameboard(3,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(2,3) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,3) == 'O' && gameboard(2,2) == 'O' && gameboard(1,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(3,1) == 'O' && gameboard(2,2) == 'O' && gameboard(1,3) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(2,3) == 'O' && gameboard(2,2) == 'O' && gameboard(2,1) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
 elseif gameboard(1,2) == 'O' && gameboard(2,2) == 'O' && gameboard(3,2) == 'O';
     disp(gameboard)
     disp('You lose. Maybe stick to rock paper scissors...')
-    return
-else
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
+    continue
+else disp ('Turns out you werent total garbage.')
+    prompt = questdlg('Wanna go again?');
+    gameon = strcmp(prompt,play);
 end
 
-disp('we got a nail biter on our hands!')
 disp(gameboard)
 disp('that was ZERO fun.')
+
+
+
+
+end
+
